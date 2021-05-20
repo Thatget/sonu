@@ -1,0 +1,76 @@
+<?php
+$_config = $this->helper('Sm\Maxshop\Helper\Data');
+?>
+
+<div class="footer-container footer-1">
+
+    <div class="footer">
+       
+
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 about-us-footer">
+                        <?php //echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('about-us-footer')->toHtml(); ?>
+
+						<img alt="" src="<?= $block->escapeUrl($block->getBaseUrl().'pub/media/skin/frontend/default/ma_computerstore/images/footer-logo.png') ?>">
+                        <h4><?= $block->escapeHtml(__('contact us')) ?></h4>
+                        <p>1-<span id="docs-internal-guid-61ef97c7-92c0-857b-bcea-51e49578109f"><span>888-594-4442</span></span></p>
+                        <p>sales@multifitblades.com</p>
+                        
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 ft-my-account">
+                        <?php //echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-my-account')->toHtml(); ?>
+
+
+                        <h4>Navigate</h4>
+                        <ul>
+                            <li><a href="<?= $block->escapeUrl($block->getUrl()) ?>"><?= $block->escapeHtml(__('Home')) ?></a></li>
+							<li><a href="<?= $block->escapeUrl($block->getUrl('multi-tool-machines.html')) ?>"><?= $block->escapeHtml(__('Select by Multi Tool')) ?></a></li>
+							<li><a href="<?= $block->escapeUrl($block->getUrl('miscellaneous-parts.html')) ?>"><?= $block->escapeHtml(__('Misc. Parts')) ?></a></li>
+							<li><a href="<?= $block->escapeUrl($block->getUrl('site_map')) ?>"><?= $block->escapeHtml(__('Site Map')) ?></a></li>
+                        </ul>
+                      
+                       
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 ft-information">
+                        <?php //echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-information')->toHtml(); ?>
+
+                        <h4>Navigate</h4>
+                        <ul>
+							<li><a href="<?= $block->escapeUrl($block->getUrl('shipping-policy')) ?>"><?= $block->escapeHtml(__('Shipping Policy')) ?></a></li>
+							<li><a href="<?= $block->escapeUrl($block->getUrl('terms-and-conditions')) ?>"><?= $block->escapeHtml(__('Terms &amp; Conditions')) ?></a></li>
+                            <li><a href="<?= $block->escapeUrl($block->getUrl('contact')) ?>"><?= $block->escapeHtml(__('Contact Us')) ?></a></li>
+							<li><a href="<?= $block->escapeUrl($block->getUrl('catalogs')) ?>"><?= $block->escapeHtml(__('Catalogs')) ?></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 ft-contact-us">
+                        <?php //echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-contact-us')->toHtml(); ?>
+                        <div class="payment-footer">
+                            <?php //echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('payment-footer')->toHtml(); ?>
+
+                            <img alt="payment by Visa accepted" id="pay-visa" src="<?= $block->escapeUrl($block->getBaseUrl().'pub/media/skin/frontend/default/ma_computerstore/images/visa.jpg') ?>" title="We accept Visa"> 
+							<img alt="payment by MasterCard accepted" id="pay-mc" src="<?= $block->escapeUrl($block->getBaseUrl().'pub/media/skin/frontend/default/ma_computerstore/images/mc.jpg') ?>" title="We accept MasterCard"> 
+							<img alt="payment by PayPal accepted" class="last" id="pay-pp" src="<?= $block->escapeUrl($block->getBaseUrl().'pub/media/skin/frontend/default/ma_computerstore/images/paypal.jpg') ?>" title="We accept PayPal">
+                        </div>
+
+                        <div class="logos-footer">
+							<img alt="Secured by RapidSSL" class="cert_img" src="https://www.rapidssl.com/assets/shared/images/rapidssl_ssl_certificate.gif" title="Secured by RapidSSL">
+							<img alt="Shop with Confidence. All orders processed with Anti-Virus &amp; Security Protection" class="sucuri-footer" src="<?= $block->escapeUrl($block->getBaseUrl().'pub/media/skin/frontend/default/ma_computerstore/images/sucuri-callout.jpg') ?>" style="margin: 11px;">
+						</div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <p>Milwaukee®, Ridgid® JobMax™, Fein® MultiMaster™, Milwaukee Electric Tool Corporation, Ridgid, Inc, Sears Brands, LLC and Central Purchasing, Inc. respectively. Bosch®, Craftsman® and Chicago Electric® are registered trademarks of C. & E. Fein GmbH, Rockwell® Sonicrafter®, Worx® and Mastercraft® are registered trademarks of Positec Group Limited, Greapo Power Tools, and Canadian Tire Corp, Ltd. respectively. Dremel® and Skil® are registered trademarks of Robert Bosch Tool Corporation</p>
+                <address>© 2014 MultiFitBlades. All Rights Reserved.</address>
+            </div>
+        </div>
+    </div>
+
+</div>

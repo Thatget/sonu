@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2020 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_CheckoutFieldsManager
+ */
+-->
+<!--
+  ~ Copyright © 2018 Aitoc. All rights reserved.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Aitoc_CheckoutFieldsManager::attributes" title="Checkout Attributes (by Aitoc)" sortOrder="900"/>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Aitoc_CheckoutFieldsManager::config" title="Aitoc: Checkout Fields Manager" translate="title" sortOrder="999998"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

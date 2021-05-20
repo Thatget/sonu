@@ -1,0 +1,191 @@
+
+
+.header-style-3 .header-bottom .menu-under {
+	float: none;
+	height: auto !important;
+}
+
+
+
+.header-bottom {
+	background-color: #2c2e2f;
+}
+
+.header-style-3 .header-bottom .menu-under .menu-wrap-bg {
+	background-color: transparent;
+	margin: 0;
+}
+
+.header-style-3 .header-bottom .menu-under .content-header-bottom {
+	padding: 0;
+}
+
+.header-style-3 .sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu > li {
+
+	> a {
+
+		line-height: 41px;
+		background-color: transparent !important;
+		text-transform: none;
+		font-size: 14px;
+		font-weight: normal;
+	}
+
+	&:hover {
+
+		> a {
+		    color: #df2b2b;
+		}
+	}
+}
+
+
+.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu .sm_megamenu_dropdown_2columns, 
+.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu .sm_megamenu_dropdown_3columns, 
+.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu .sm_megamenu_dropdown_4columns, 
+.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu .sm_megamenu_dropdown_5columns, 
+.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu .sm_megamenu_dropdown_6columns, 
+.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu .sm_megamenu_dropdown_fullwidth {
+	
+	
+	left: -15px;
+	width: 100% !important;
+	max-width: 862px;
+    border-bottom: solid 4px #df2b2b;
+    padding: 0 !important;
+
+    .sm_megamenu_title_lv-2,
+    .sm_megamenu_description {
+    	display: none;
+    }
+}	
+
+.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu .sm_megamenu_dropdown_1column  {
+	
+	padding: 0 !important;
+	border-bottom: solid 4px #df2b2b;
+
+	.sm_megamenu_col_1 {
+		width: 100% !important;
+		padding: 0 !important;
+
+		a {
+		    padding: 5px 15px 5px 18px;
+		    display: block;
+	        color: #4b4b4b !important;
+	        border-bottom: 1px solid #c2c1c1;
+	        font-size: 14px;
+
+		    &:hover {
+		    	background: #d3d2d2;
+	    	    color: #4b4b4b;
+		    }
+		}
+	}
+
+}
+
+.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu .sm_megamenu_col_4  {
+	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	display: -webkit-flex; 
+	display: flex;
+	
+	.sm_megamenu_col_1 {
+		width: 25% !important;
+	}
+
+	.sm_megamenu_head_item ,
+	.sm_megamenu_title  ,
+	.sm_megamenu_content ,
+	.custom-dd-col,
+	.two-rows {
+		height: 100%;
+	}
+
+	.two-rows  {
+		display: -webkit-flex; 
+		display: flex;
+		-webkit-flex-direction: column; 
+		flex-direction: column;
+
+		.custom-dd-col {
+			height: auto;
+			flex-grow: 1;
+    		-webkit-flex-grow: 1;
+
+			+ .custom-dd-col {
+				border-top: 1px solid #d4d3d3;
+			}
+		}
+	}
+}
+
+.sm_megamenu_content .custom-dd-col {
+    background-color: #f5f5f5;
+    color: #2c2e2f;
+    font-size: 14px;
+    background-repeat: no-repeat;
+    margin: 0 -15px;
+
+    .inner {
+	    padding: 10px 15px;
+	    border-left: 1px solid #d4d3d3;
+	    height: 100%;
+	    .transition(0.1s);
+	}
+
+	h1 {
+	    font-size: 18px;
+	    font-family: 'Racing Sans One', cursive;
+	    line-height: 1.35;
+	    margin: 0;
+        color: #df2b2b;
+	}
+
+	h3 {
+		font-size: 15px;
+	    font-family: 'Racing Sans One', cursive;
+	    font-weight: normal;
+	    margin: 0;
+	}
+
+	a {
+	    text-decoration: none;
+	    color: #2c2e2f;
+	    cursor: pointer;
+	}
+
+	&:hover {
+	    background-color: #d4d3d3;
+	}
+
+	&.multi-fit-standard {
+	    background-image: url(../images/custom/dd-multifit-arbor.png);
+	    background-position: right 60px;
+	}
+
+	&.quick-release-style {
+	    background-image: url(../images/custom/dd-quick-release-arbor.png);
+	    background-repeat: no-repeat;
+	    background-position: right 60px;
+	}
+
+	&.classic-rockwell-original {
+	    background-image: url(../images/custom/dd-rockwell-arbor.png);
+	    background-repeat: no-repeat;
+	    background-position: right 60px;
+	}
+
+	&.porter-cable-standard {
+	    background-image: url(../images/custom/dd-porter-cable-arbor.png);
+	    background-repeat: no-repeat;
+	    background-position: right 40px;
+	}
+
+	&.supercut {
+	    background-image: url(../images/custom/dd-supercut-arbor.png);
+	    background-repeat: no-repeat;
+	    background-position: right 15px;
+	}
+}

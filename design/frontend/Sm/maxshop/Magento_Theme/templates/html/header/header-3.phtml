@@ -1,0 +1,102 @@
+<div class="header-container header-style-3">
+    <div class="header">
+        <div class="header-inner">
+          
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 header-logo">
+                        <?php echo $block->getChildHtml('logo-header'); ?>
+                    </div>
+                    
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 header-topright">
+                        <div class="header-top">
+                            
+                            <?php echo $block->getChildHtml('language-header'); ?>
+
+                            
+
+                            <div class="dropdown-block-custom">
+                                <div class="dropdown-toggle">
+                                    <a class="myaccount-link" href="<?php echo $block->getUrl('customer/account'); ?>"
+                                       title="<?php echo __('My Account'); ?>"><?php echo __('My Account'); ?></a>
+                                </div>
+                            </div>
+                            <div class="mini-cart-header">
+                                <?php echo $block->getChildHtml('cart-header'); ?>
+                            </div>
+                            <div class="dropdown-block-custom block-checkout">
+                                <div class="dropdown-toggle">
+                                    <a class="top-link-checkout" href="<?php echo $block->getUrl('checkout') ?>"
+                                       title="<?php echo __('Checkout'); ?>"><?php echo __('Checkout'); ?></a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-block-custom block-login">
+                                <div class="dropdown-toggle">
+                                    <?php
+                                    $login_customer = $block->getLayout()->createBlock('Magento\Customer\Block\Account\Customer');
+                                    ?>
+
+                                    <?php if ($login_customer->customerLoggedIn()) { ?>
+                                        <a class="mn-logout"
+                                           href="<?php echo $block->getUrl('customer/account/logout') ?>"
+                                           title="<?php echo __('Logout'); ?>"><?php echo __('Logout'); ?></a>
+                                    <?php } else { ?>
+                                        <a class="mn-login"
+                                           href="<?php echo $block->getUrl('customer/account/login') ?>"
+                                           title="<?php echo __('Login') ?>"><?php echo __('Login') ?></a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-middle">
+                            <div class="header-contact">
+                                <a class="no-hover" href="#"><img src="/pub/media/skin/frontend/default/ma_computerstore/images/telephone-order.png" alt="Telephone Orders &amp; Customer Support Number | 1-888-594-4442"></a>
+                            </div>
+                            <div class="header-contact">
+                                <a href="/shipping-policy">
+                                    <img src="/pub/media/skin/frontend/default/ma_computerstore/images/free-shipping.png" alt="Free Shipping to United States &amp; Canada on all orders over $75">
+                                </a>
+                            </div>
+                            <?php echo $block->getChildHtml('currency-header'); ?>
+
+                            <div class="header-advanced-aearch">
+                                <a href="<?php echo $block->getUrl('catalogsearch/advanced'); ?>"><span>Advanced Search</span></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+      
+        </div>  
+
+        <div class="header-bottom">
+            <div class="yt-menu">
+                <div class="menu-under">
+                    <div class="container">
+                        <div class="menu-wrap-bg">
+                            <div class="content-header-bottom">
+                                <div class="navigation-container <?php ($_config->getGeneral('menu_style') == 'megamenu') ? "" : " css-menu-wrap"; ?>">
+                                    <?php
+                                    if ($_config->getGeneral('menu_style') == 'megamenu') {
+                                        echo $block->getChildHtml('navigation-header-megamenu');
+                                    } else {
+                                        echo $block->getChildHtml('navigation-header');
+                                    }
+                                    ?>
+                                    <div class="navigation-mobile-container">
+                                        <?php echo $block->getChildHtml('navigation.mobile'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+/**
+ * Product additional attributes template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Attributes
+ */
+?>
+<?php
+    $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+    $_product = $block->getProduct();
+?>
+<?php if ($_additional = $block->getAdditionalData()) :?>
+    <div class="additional-attributes-wrapper table-wrapper"  style="display: inline-block;">
+		<h4 class="table-caption"><?= $block->escapeHtml(__('Additional Information')) ?></h4>
+        <table class="data table additional-attributes" id="product-attribute-specs-table">
+            <tbody>
+			<?php $i = 0; ?>
+            <?php foreach ($_additional as $_data) :?>
+			<?php $i++; ?>
+			<?php $remainder = $i % 2; ?>
+			<?php if($remainder): ?> 
+                <tr class="even">
+			<?php else: ?>
+				<tr class="odd">
+			<?php endif; ?>
+                    <th class="col label" scope="row"><?= $block->escapeHtml($_data['label']) ?></th>
+                    <td class="col data" data-th="<?= $block->escapeHtmlAttr($_data['label']) ?>"><?= /* @noEscape */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+	<style>
+		.data.table .odd {
+			background: #f8f7f5;
+		}
+		.data.table .even {
+			background: #eeeded;
+		}
+		.data.table .col.label {
+			border-bottom: 1px solid #d9dde3;
+			border-right: 1px solid #d9dde3;
+		}
+		.additional-attributes-wrapper.table-wrapper h4 {
+			border-bottom: 2px solid #E8E8E8;
+			margin: 0 0 10px;
+			padding: 0 0 1px;
+			font-weight: normal;
+		}
+	</style>
+<?php endif;?>

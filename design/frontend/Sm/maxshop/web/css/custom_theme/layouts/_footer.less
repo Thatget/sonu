@@ -1,0 +1,120 @@
+
+.page-footer {
+    padding: 10px 5px;
+    background-color: #2c2e2f;
+    font-size: 12px;
+    color: #818181;
+    
+
+	.footer {
+		background-color: transparent;
+		color: #818181;
+
+		.footer-middle,
+		.copyright {
+			background-color: transparent;
+		}
+	}
+
+	a {
+		color: #fff;
+	}
+
+	address {
+		text-align: center;
+	    margin: 0 0 20px;
+    	color: #818181;
+	}
+}
+
+.footer-middle {
+	padding: 0 !important;
+
+	.row {
+
+	}
+
+	.col-lg-3.col-md-3.col-sm-6 {
+		border: none !important;
+	}
+
+	h4 {
+	    margin-top: 15px;
+        color: #6f6f6f;
+	    font-size: 16px;
+	    margin-bottom: 5px;
+	    font-weight: bold;
+	    margin-top: 0;
+	}
+
+	ul {
+		line-height: 22px;
+		color: #fff;
+
+		a {
+			color: #fff !important;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.about-us-footer {
+	position: relative;
+	color: #fff;
+    width: 23%;
+
+	&:before {
+		content: "";
+	    background: url(../images/custom/footer-blade.png);
+	    height: 250px;
+	    width: 300px;
+	    position: absolute;
+	    z-index: 10;
+	    top: -100px;
+	    left: -29px;
+	}
+
+	> * {
+		position: relative;
+		z-index: 20;
+	}
+
+	img {
+		background-color: transparent !important;
+	}
+
+
+	p {
+		margin: 0;
+	}
+}
+
+.ft-my-account ,
+.ft-information{
+	width: 15%;
+}
+
+.ft-contact-us {
+	width: 47%;
+	margin-top: 22px;
+}
+
+@media(max-width: 767px)  {
+
+	.about-us-footer {
+		width: 100%;
+	}
+
+	.ft-my-account,
+	.ft-information {
+		width: 47%;
+		float: left;
+	}
+
+	.ft-contact-us {
+		width: 100%;
+	}
+}

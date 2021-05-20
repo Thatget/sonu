@@ -1,0 +1,41 @@
+<?php
+/**
+ * @author Aitoc Team
+ * @copyright Copyright (c) 2020 Aitoc (https://www.aitoc.com)
+ * @package Aitoc_CheckoutFieldsManager
+ */
+?>
+<?php /** @var \Aitoc\CheckoutFieldsManager\Block\Adminhtml\Sales\Order\Invoice\AitocCheckoutFields $block */ ?>
+<?php /** @noinspection PhpUnhandledExceptionInspection */
+$order = $block->getOrder() ?>
+<section class="admin__page-section order-view-account-information">
+    <div class="admin__page-section-title">
+        <span class="title">
+            <?php /* @escapeNotVerified */ echo __('Additional Info'); ?>
+            <div class="actions">
+                <?php /* @escapeNotVerified */ echo $block->getCustomerCheckoutAttributeEditLink($order->getId()) ?>
+            </div>
+        </span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item order-invoice-additional-fields-block-a">
+            <div class="admin__page-section-item-content">
+                <?php /** @noinspection PhpUnhandledExceptionInspection */
+                if ($checkoutFieldsDataLeft = $block->getCheckoutFieldsData()) : ?>
+                    <table class="admin__table-secondary order-invoice-additional-fields-table">
+                        <tbody>
+                        <?php foreach ($checkoutFieldsDataLeft as $oneField) : ?>
+                            <tr>
+                                <?php /* @escapeNotVerified */
+                                echo $oneField; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <span><?= __('Not selected') ?></span>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</section>

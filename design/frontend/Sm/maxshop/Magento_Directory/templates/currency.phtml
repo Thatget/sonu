@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Currency switcher
+ *
+ * @see \Magento\Directory\Block\Currency
+ */
+?>
+<?php if ($block->getCurrencyCount() > 1): ?>
+    <?php $currencies = $block->getCurrencies(); ?>
+    <?php $currentCurrencyCode = $block->getCurrentCurrencyCode(); ?>
+    <?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : '' ?>
+    <div class="switcher currency switcher-currency" id="switcher-currency<?php /* @escapeNotVerified */
+    echo $id ?>">
+        <strong class="label switcher-label"><span><?php /* @escapeNotVerified */
+                echo __('Currency Select') ?></span></strong>
+        <div class="actions dropdown options switcher-options">
+		<?php
+			if($block->escapeHtml($currentCurrencyCode) == "USD"){
+		?>
+            <strong class="active language-<?php echo $block->escapeHtml($block->getCurrentCurrencyCode()) ?>"><?php echo $block->escapeHtml($currentCurrencyCode) ?></strong>
+
+                <?php foreach ($currencies as $_code => $_name): ?>
+                    <?php if ($_code != $currentCurrencyCode): ?>
+						
+							<a 
+								href="<?php /* @escapeNotVerified */ echo $block->escapeUrl($block->getWebsiteUrl($_code)) ?>"
+								class="language-<?php /* @escapeNotVerified */
+								echo $_code ?> switcher-optionn"><?php /* @escapeNotVerified */
+									echo $_code ?></a>
+									
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php
+			}else{
+				?>
+				 <?php foreach ($currencies as $_code => $_name): ?>
+                    <?php if ($_code != $currentCurrencyCode): ?>
+						
+							<a 
+								href="<?php /* @escapeNotVerified */ echo $block->escapeUrl($block->getWebsiteUrl($_code)) ?>"
+								class="language-<?php /* @escapeNotVerified */
+								echo $_code ?> switcher-optionn"><?php /* @escapeNotVerified */
+									echo $_code ?></a>
+									
+                    <?php endif; ?>
+                <?php endforeach; ?>
+				
+				<strong class="active language-<?php echo $block->escapeHtml($block->getCurrentCurrencyCode()) ?>"><?php echo $block->escapeHtml($currentCurrencyCode) ?></strong>
+				<?php
+			}
+			?>
+        </div>
+    </div>
+<?php endif; ?>

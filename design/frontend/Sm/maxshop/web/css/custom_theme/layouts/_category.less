@@ -1,0 +1,170 @@
+
+
+
+.toolbar {
+    background: #f7f7f7;
+
+    .label,
+    label {
+    	background-color: transparent !important;
+    }
+
+    select {
+    	background-color: #fff;
+    }
+}
+
+.toolbar-products {
+
+	.modes {
+		display: none;
+	}
+
+	.sortby-limiter {
+		width: 100%;
+	}
+
+	.field.limiter {
+		float: right;
+	}
+
+	.limiter .limiter-text {
+		display: inline-block;
+	}
+
+
+	.toolbar-sorter .sorter-label {
+		display: inline-block;
+	}
+
+	.pages {
+		margin-right: 30px;
+	}
+}
+
+.catalog-category-view {
+
+	.page-main  {
+		padding-bottom: 80px;
+		padding-top: 30px;
+	}
+
+	.page-title-wrapper,
+	.breadcrumbs {
+		display: none !important;
+	}
+}
+
+.category-description {
+    color: #4b4b4b;
+
+
+
+	.category-desc {
+		flex-wrap: wrap;
+		-webkit-flex-wrap: wrap;
+		display: -webkit-flex; 
+		display: flex;
+
+		h1 {
+			color: #df2b2b;
+		    font-family: @font-family_base2;
+		    font-size: 40px;
+		    display: inline-block;
+		    margin: 0;
+		    padding-right: 5px;
+		    text-transform: uppercase;
+		    font-weight: normal;
+
+		    .subtitle {
+		    	display: none;
+		    }
+
+		}
+
+		h4 {
+		    font-weight: bold;
+		    margin: 0;
+		    font-size: 17px;
+		    line-height: 17px;
+		    display: inline-block;
+		    text-transform: uppercase;
+		}
+
+		h3 {
+		    font-size: 16px;
+		    font-family: @font-family_base2;
+		    font-weight: normal;
+		}
+
+		.category-arbor-title {
+		    width: 74.35897435897436%;
+		}
+
+		.cat-guarantee-shipping {
+			display: inline-block;
+    		margin-top: 15px;
+    		width: 23.076923076923077%;
+		    margin-left: 2%;
+		}
+
+		#cat-MFS {
+			float: left;
+		    padding: 15px 20px 0 10px;
+		}
+
+		#collapse1 {
+    		display: none;
+    	}
+
+		.short-desc {
+		    margin-left: 61px;
+
+		    &.active {
+
+		    	#collapse1 {
+		    		display: block;
+		    	}
+
+		    	.nav-toggle {
+		    		font-size: 0 !important;
+		    		color: transparent !important;
+
+		    		&:before {
+		    			content: "- Hide complete list";
+		    			font-size: 14px !important;
+		    			color: #4b4b4b !important;
+		    		}
+		    	}
+		    }
+		}
+
+		.nav-toggle {
+		    border-radius: 3px;
+		    background: #ddd !important;
+		    border-color: #ddd !important;
+		    padding: 0 8px;
+		    color: #4b4b4b !important;
+		    text-decoration: none;
+		    border: none;
+		    min-width: 145px;
+		    text-transform: none;
+		    font-size: 14px;
+		}
+	}
+}
+
+@media(max-width: 767px) {
+
+	.category-description .category-desc .category-arbor-title {
+		width: 100%;
+	}
+
+	.category-description .category-desc .cat-guarantee-shipping {
+		display: none;
+	}
+
+	.toolbar.toolbar-products .toolbar-sorter {
+		display: none !important;
+	}
+}

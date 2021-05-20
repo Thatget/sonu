@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+
+<?php
+$_config = $this->helper('Sm\Maxshop\Helper\Data');
+?>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 image-box-detail">
+        <?php echo $block->getChildHtml('product.info.media'); ?>
+    </div>
+
+    <div class="col-lg-6 col-md-6 info-box-detail">
+        <?php echo $block->getChildHtml('product.info.main'); ?>
+
+    </div>
+</div>
+<div class="row">
+   
+    <div class="col-lg-12 col-md-12 detail-bottom-wrapper">
+        <?php echo $block->getChildHtml('detail.bottom'); ?>
+
+        <?php
+        $related = $block->getChildHtml('related.product');
+        $upsell = $block->getChildHtml('upsell.product');
+        ?>
+
+        <?php echo $block->getChildHtml('related.product'); ?>
+
+
+        <?php if ($_config->getProductDetail('show_upsell')) { ?>
+            <div class="box-related-upsell">
+                <?php echo $block->getChildHtml('upsell.product'); ?>
+            </div>
+        <?php } ?>
+    </div>
+
+</div>

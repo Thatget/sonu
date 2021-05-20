@@ -169,6 +169,18 @@
 								<argument name="title" translate="true" xsi:type="string">Similar Products</argument>
 							</arguments>
 						</block>
+						<block class="Magento\Catalog\Block\Product\View\Description"
+							name="product.info.brand" template="product/view/attribute.phtml" group="detailed_info">
+							<arguments>
+								<argument name="at_call" xsi:type="string">getArbour</argument>
+								<argument name="at_code" xsi:type="string">arbour</argument>
+								<argument name="at_type" xsi:type="string">text</argument>
+								<argument name="css_class" xsi:type="string">arbour</argument>
+								<argument name="title" translate="true" xsi:type="string">Compatible Machines</argument>
+								<argument name="at_label" xsi:type="string">Arbour</argument>
+								<argument name="add_attribute" xsi:type="string">itemprop="arbour"</argument>
+							</arguments>
+						</block>
                     </block>
                     <block class="Magento\Cookie\Block\RequireCookie" name="require-cookie"
                            template="Magento_Cookie::require_cookie.phtml">

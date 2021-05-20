@@ -1,0 +1,41 @@
+1,Suno create MW module for curency
+ /public_html/app/design/frontend/Sm/maxshop/Magento_Directory/templates
+2,/public_html/app/design/frontend/Sm/maxshop/Sm_BasicProducts/templates/slidbar-product.phtml
+_getSelectSource()
+app/code/SM/BasicProduct/Helper/Data:
+change: $_media_dir = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product';
+to:     $_media_dir = $this->_getBaseDirMedia().'catalog/product';
+3, /public_html/app/design/frontend/Sm/maxshop/web/css/_header.less
+.header-container {
+    // MINI CART
+                top: 15px;(36->15) line 178
+	> .actions {
+                    display: flex; line 335
+
+4,SM MEGA MENU > Select by Multi Tool menu type = Menu Type > Data type => link full => http://m2multifitblades.com/multi-tool-machines.html
+
+5,/public_html/app/code/Aitoc/CheckoutFieldsManager/view/frontend/web/css/aitoc_summảy.css
+line 46     font-family: 'luma-icons'; => font-family: 'icons-blank-theme';
+
+6,comment line 102 /public_html/app/code/Aitoc/CheckoutFieldsManager/Controller/Adminhtml/CheckoutAttribute/Save.php
+//$data = array_merge($data, $this->getUnserializedOptions($data['serialized_options']));
+
+7, edit header /public_html/app/design/frontend/Sm/maxshop/Magento_Theme/templates/html/header/header-3.phtml
+
+8/public_html/pub/static/frontend/Sm/maxshop/en_US/Magento_Checkout/template/minicart/content.html
+<div data-bind="html: getCartParamUnsanitizedHtml('extra_actions')"></div>'-> <div data-bind="html: getCartParam('extra_actions')"></div> line 100
+regionHasElements('promotion') -> getRegion('promotion').length (like magento)
+9,change position "   <!-- ko if: getCartParam('summary_count') -->     " /home/sandbox2/public_html/app/design/frontend/Sm/maxshop/Magento_Checkout/templates/cart/minicart.phtml
+10,remove "Similar Products
+" /home/sandbox2/public_html/app/design/frontend/Sm/maxshop/Magento_Catalog/templates/product/view/detail.phtml
+11,delete content in Maxshop - Responsive Magento 2 & 1 Shop Theme(style 3)
+12,edit /public_html/app/code/Sm/CartQuickPro/Controller/Cart/Add.php(to add popup to add bundle product)
+13,edit /public_html/app/design/frontend/Sm/maxshop/Sm_CartQuickPro/web/js/custom-addtocart.js close modal
+14,edit /public_html/app/design/frontend/Sm/maxshop/Magento_Catalog/layout/catalog_product_view.xml to display infimation tab under add to cart buttom
+15,edit etc.xml
+	<type name="Magento\Catalog\Model\Product\Type\AbstractType">
+        <plugin disabled="false" name="custom_to_check_bundle_product" sortOrder="10" type="MW\CustomCurrency\Plugin\Catalog\Model\Product\Type\AbstractType"/>
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\Add">
+        <plugin disabled="false" name="custom_to_add_bundle_product" sortOrder="10" type="MW\CustomCurrency\Plugin\Checkout\Controller\Cart\Add"/>
+    </type>

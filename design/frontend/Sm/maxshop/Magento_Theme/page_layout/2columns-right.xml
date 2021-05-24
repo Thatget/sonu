@@ -41,4 +41,5 @@
             </container>
         </container>
     </referenceContainer>
+	<referenceContainer name="div.sidebar.main" remove="true" />
 </layout>

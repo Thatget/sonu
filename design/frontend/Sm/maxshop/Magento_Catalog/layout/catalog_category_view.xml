@@ -11,8 +11,7 @@
         <referenceContainer name="div.row">
             <container name="container1" htmlTag="div" htmlClass="full-wrapper banner-bottom-wrapper">
             </container>
-
-
         </referenceContainer>
+		<move element="category.cms" destination="content" after="-"/>
     </body>
 </page>

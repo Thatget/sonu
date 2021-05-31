@@ -1,0 +1,292 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+?>
+<?php
+/**
+ * Catalog advanced search form
+ *
+ * @var $block \Magento\CatalogSearch\Block\Advanced\Form
+ */
+?>
+<?php $maxQueryLength = $this->helper(\Magento\CatalogSearch\Helper\Data::class)->getMaxQueryLength();?>
+	<form class="form search advanced" action="<?= $block->escapeUrl($block->getSearchPostUrl()) ?>" method="get">
+	<div id="fieldset_form1" class="fieldset">
+	  <div class="primary" style="margin-left:2px">
+		<button type="submit"
+				class="action search primary"
+				title="<?= $block->escapeHtmlAttr(__('Search')) ?>">
+			<span><?= $block->escapeHtml(__('Search')) ?></span>
+		</button>
+	  </div>
+	</div>
+	</form>
+	<div class="advanced-search-box">
+		<div class="page-title myAS">
+			<h6>Advanced Search</h6>
+		</div>
+	<form class="form search advanced" style="width: auto;" action="<?= $block->escapeUrl($block->getSearchPostUrl()) ?>" method="get" id="form-validate">
+	<fieldset class="fieldset">
+    <?php foreach ($block->getSearchableAttributes() as $_attribute) : ?>
+        <?php $_code = $_attribute->getAttributeCode() ?>
+		<?php if(($_code === "sku")||($_code === "machine") || ($_code === "intendeduse")) : ?>
+		<?php if($_code === "sku") : ?>
+        <div id="field_form1" class="field <?= $block->escapeHtmlAttr($_code) ?>">
+		<?php else : ?>
+        <div class="adv-selection-holder field <?= $block->escapeHtmlAttr($_code) ?>">
+		<?php endif; ?>
+            <label class="label" for="<?= $block->escapeHtmlAttr($_code) ?>">
+                <span><?= $block->escapeHtml(__($block->getAttributeLabel($_attribute))) ?></span><b style="color: #df2b2b;">*</b>
+            </label>
+			<?php if($_code === "intendeduse") : ?>
+			<div class="div-under"><a href="javascript:void(0)" class="a-under" id="check-intendeduse">Select all</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a class="a-under" href="javascript:void(0)" id="uncheck-intendeduse">Select none</a></div>
+			<?php endif; ?>
+            <div class="control">
+                <?php
+                switch ($block->getAttributeInputType($_attribute)) :
+                    case 'number':
+                        ?>
+                <div class="range fields group group-2">
+                    <div class="field no-label">
+                        <div class="control">
+                            <input type="text"
+                                   name="<?= $block->escapeHtmlAttr($_code) ?>[from]"
+                                   value="<?= $block->escapeHtmlAttr($block->getAttributeValue($_attribute, 'from')) ?>"
+                                   id="<?= $block->escapeHtmlAttr($_code) ?>"
+                                   title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($_attribute)) ?>"
+                                   class="input-text"
+                                   maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                                   data-validate="{number:true, 'less-than-equals-to':'#<?= $block->escapeHtmlAttr($_code) ?>_to'}" />
+                        </div>
+                    </div>
+                    <div class="field no-label">
+                        <div class="control">
+                            <input type="text"
+							<?php if($_code === "sku") : ?>
+								style="	border: 1px solid #ddd;border-radius: 4px;min-width: 206px;"
+							<?php endif; ?>
+                                   name="<?= $block->escapeHtmlAttr($_code) ?>[to]"
+                                   value="<?= $block->escapeHtmlAttr($block->getAttributeValue($_attribute, 'to')) ?>"
+                                   id="<?= $block->escapeHtmlAttr($_code) ?>_to"
+                                   title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($_attribute)) ?>"
+                                   class="input-text"
+                                   maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                                   data-validate="{number:true, 'greater-than-equals-to':'#<?= $block->escapeHtmlAttr($_code) ?>'}" />
+                        </div>
+                    </div>
+                </div>
+                        <?php
+                        break;
+                    case 'price':
+                        ?>
+                <div class="range price fields group group-2">
+                    <div class="field no-label">
+                        <div class="control">
+                            <input name="<?= $block->escapeHtmlAttr($_code) ?>[from]"
+                                   value="<?= $block->escapeHtmlAttr($block->getAttributeValue($_attribute, 'from')) ?>"
+                                   id="<?= $block->escapeHtmlAttr($_code) ?>"
+                                   title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($_attribute)) ?>"
+                                   class="input-text"
+                                   type="text"
+                                   maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                                   data-validate="{number:true, 'less-than-equals-to':'#<?= $block->escapeHtmlAttr($_code) ?>_to'}" />
+                        </div>
+                    </div>
+                    <div class="field with-addon no-label">
+                        <div class="control">
+                            <div class="addon">
+                                <input name="<?= $block->escapeHtmlAttr($_code) ?>[to]"
+                                       value="<?= $block->escapeHtmlAttr($block->getAttributeValue($_attribute, 'to')) ?>"
+                                       id="<?= $block->escapeHtmlAttr($_code) ?>_to"
+                                       title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($_attribute)) ?>"
+                                       class="input-text"
+                                       type="text"
+                                       maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                                       data-validate="{number:true, 'greater-than-equals-to':'#<?= $block->escapeHtmlAttr($_code) ?>'}" />
+                                <label class="addafter"
+                                       for="<?= $block->escapeHtmlAttr($_code) ?>_to">
+                                    <?= $block->escapeHtml($block->getCurrency($_attribute)) ?>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        <?php
+                        break;
+                    case 'select':
+                        ?>
+                        <?= /* @noEscape */ $block->getAttributeSelectElement($_attribute) ?>
+                        <?php
+                        break;
+                    case 'yesno':
+                        ?>
+                        <?= /* @noEscape */ $block->getAttributeYesNoElement($_attribute) ?>
+                        <?php
+                        break;
+                    case 'date':
+                        ?>
+                <div class="range dates fields group group-2">
+                    <div class="field date no-label">
+                        <div class="control">
+                            <?= /* @noEscape */ $block->getDateInput($_attribute, 'from') ?>
+                        </div>
+                    </div>
+                    <div class="field date no-label">
+                        <div class="control">
+                            <?= /* @noEscape */ $block->getDateInput($_attribute, 'to') ?>
+                        </div>
+                    </div>
+                </div>
+                        <?php
+                        break;
+                    default:
+                        ?>
+                <input type="text"
+                       name="<?= $block->escapeHtmlAttr($_code) ?>"
+                       id="<?= $block->escapeHtmlAttr($_code) ?>"
+                       value="<?= $block->escapeHtmlAttr($block->getAttributeValue($_attribute)) ?>"
+                       title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($_attribute)) ?>"
+                       class="input-text <?= $block->escapeHtmlAttr($block->getAttributeValidationClass($_attribute)) ?>"
+                       maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>" />
+            <?php endswitch; ?>
+            </div>
+        </div>
+		<?php endif;?>
+    <?php endforeach; ?>
+</fieldset>
+<div class="actions-toolbar buttons-set"">
+  <div class="primary">
+    <button type="submit"
+            class="action search primary"
+            title="<?= $block->escapeHtmlAttr(__('Advanced Search')) ?>">
+        <span><?= $block->escapeHtml(__('Advanced Search')) ?></span>
+    </button>
+  </div>
+  <span style="color: #df2b2b;">* required fields</span>
+</div>
+</form>
+</div>
+<script>
+require([
+    "jquery",
+    "mage/mage",
+    "mage/validation"
+], function($){
+    $('#form-validate').mage('validation', {
+            errorPlacement: function (error, element) {
+                var parent = element.parent();
+                if (parent.hasClass('range')) {
+                    parent.find(this.errorElement + '.' + this.errorClass).remove().end().append(error);
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            messages: {
+                'price[to]': {'greater-than-equals-to': '<?= $block->escapeJs(__('Please enter a valid price range.')) ?>'},
+                'price[from]': {'less-than-equals-to': '<?= $block->escapeJs(__('Please enter a valid price range.')) ?>'}
+            }
+        });
+});
+</script>
+<script>
+require([
+    "jquery"
+], function($){
+		var a = "";
+    $("#intendeduse option").each(function( i ) {
+		a += '<div class="intendeduse_content"><input id="intendeduse_' 
+		+ $(this).val() + '" type="checkbox" name="intendeduse[]" value="' 
+		+ $(this).val() + '"/><label style="margin-left: 10px;" for="intendeduse_' 
+		+ $(this).val() + '">' + $(this).html() + '</label></div>';
+	});
+	b = '<div>' + a + '</div>';
+	$("#intendeduse").replaceWith(b);
+	$("#field_form1 label").remove();
+	$("#field_form1").prependTo( $( "#fieldset_form1" ));
+	$("#machine").removeAttr('multiple').removeAttr('class').removeAttr('size').prepend(new Option("Select Machine", "")).attr('required','true	');
+	$("#machine option").first().attr("selected","true");
+	$("#sku").attr("required","true");
+	
+	//$("#none-display").css('display','block');
+	$("#check-intendeduse").click(function (e) {
+		$(".intendeduse_content input[type=checkbox]").each(function(){
+			$(this).attr('checked', "checked");
+		});
+	});
+	$("#uncheck-intendeduse").click(function (e) {
+		$(".intendeduse_content input[type=checkbox]").each(function(){
+			$(this).attr('checked', false);
+		});
+	});
+	$( "#form-validate" ).submit(function( event ) {
+		if($('input[type=checkbox]:checked').length == 0) {
+		alert ( "Select your Intended Use" );
+		return false;
+		}
+	});
+});
+</script>
+<style>
+.intendeduse_content{
+	width: 45%;
+    min-width: 300px;
+    float: left;
+}
+#fieldset_form1{
+	display:flex;
+}
+.adv-selection-holder {
+    background: #f5f5f5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.page-title.myAS {
+    background-image: url("<?= $block->escapeUrl($block->getUrl("pub/media/skin/frontend/default/ma_computerstore/images/"))?>adv-search-title-BG.png");
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    margin-bottom: 20px;
+}
+.page-title.myAS h6 {
+	background: #fff;
+    display: inline-block;
+    padding-right: 5px;
+}
+.adv-selection-holder.field .control select {
+	width: fit-content;
+	background-color: #fff;
+}
+.page-title {
+	font-family: racing_sans_oneregular;
+	text-transform: none !important;
+	font-family: 'Racing Sans One', cursive;
+    color: #2c2e2f;
+    font-weight: normal;
+}
+.buttons-set {
+    clear: both;
+    margin: 15px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px solid #e4e4e4;
+    text-align: right;
+}
+a.a-under{
+    text-decoration: underline;
+}a.a-under:hover{
+	text-decoration: none;
+}div.div-under{
+	clear: both;
+}
+.buttons-set button.action.search span{
+	padding-right: 30px;
+	background-image: url("<?= $block->escapeUrl($block->getUrl("pub/media/skin/frontend/default/ma_computerstore/images/"))?>mag-glass-ico.png");
+	background-repeat: no-repeat;
+    background-position: 95% 50%;
+}
+</style>

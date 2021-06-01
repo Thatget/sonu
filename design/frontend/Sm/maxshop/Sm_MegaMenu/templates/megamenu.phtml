@@ -37,6 +37,19 @@ if ($config['theme'] == \Sm\MegaMenu\Model\Config\Source\ListTheme::VERTICAL) {
 }
 $instance = rand() . time();
 $id = ($this->getFrontController()->getRequest()->getParam('id')) ? $this->getFrontController()->getRequest()->getParam('id') : ($this->getFrontController()->getRequest()->getParam('page_id') ? $this->getFrontController()->getRequest()->getParam('page_id') : '');
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+$catalogHelperData = $this->helper('Magento\Catalog\Helper\Data');
+$categoryObject = $catalogHelperData->getCategory();
+if(isset($categoryObject)){
+	$categoryId = $categoryObject->getId();
+}else{
+	$categoryId = -1;
+}
+$cmsPage = $objectManager->get('\Magento\Theme\Block\Html\Header\Logo');
+$checkHomePage = $cmsPage->isHomePage();
+
 ?>
 <?php if (count($itemsStartLv)): ?>
     <?php include($block->getTemplateFile("Sm_MegaMenu::js/add_js_by_effect.phtml")); ?>
@@ -80,7 +93,8 @@ $id = ($this->getFrontController()->getRequest()->getParam('id')) ? $this->getFr
 							<?php echo $prefix; ?>lv1 <?php echo ($hasContent) ? $prefix . 'drop parent' : $prefix . 'nodrop' ?>  <?php echo ($isAlignRight) ? $prefix . 'right' : '' ?>  <?php echo $_active; ?>">
                             <a class="<?php echo $prefix; ?>head <?php echo ($hasContent) ? $prefix . 'drop' : $prefix . 'nodrop' ?> <?php if ($menuItems->getAllItemsByItemsIdEnabled($itemStartLv['items_id'], $itemStartLv['group_id']) || ($itemStartLv['type'] == 7)) {
                                 echo $prefix . 'haschild';
-                            } ?>"
+                            }
+							?>"
                                href="<?php echo ($hasLinkType) ? $this->getLinkOfType($itemStartLv) : 'javascript:void(0)' ?>" <?php echo ($hasLinkType) ? $this->getTargetAttr($itemStartLv['target']) : '' ?>
                                id="<?php echo $prefix . $itemStartLv['items_id']; ?>">
                                 <?php if ($this->hasIcon($itemStartLv)) { ?>
@@ -94,7 +108,26 @@ $id = ($this->getFrontController()->getRequest()->getParam('id')) ? $this->getFr
                                         echo $prefix . 'nodesc';
                                     } ?>">
 														<?php } ?>
-                                        <span class="<?php echo $prefix; ?>title"><?php echo __($itemStartLv['title']) ?></span>
+                                        <span
+										<?php if ($itemStartLv['custom_class']) {
+											$pos1 = strpos($itemStartLv['custom_class'], "is_home_page");
+											if (!($pos1 === false)) {
+												if($checkHomePage){
+													echo "style='color: #df2b2b;'";
+												}
+											}
+											$pos2 = strpos($itemStartLv['custom_class'], "*");
+											if (!($pos2 === false)) {
+												$categoryIds = explode("*", $itemStartLv['custom_class']);
+												$ids = $categoryIds[0];
+												$id= explode(',',$ids);								
+												if(in_array($categoryId,$id)){
+													echo "style='color: #df2b2b;'";
+												}
+											}
+										}
+							?>
+										class="<?php echo $prefix; ?>title"><?php echo __($itemStartLv['title']) ?></span>
 										<?php if ($itemStartLv['description']): ?>
                                             <span class="<?php echo $prefix; ?>description"><?php echo __($itemStartLv['description']) ?>
                                                 &nbsp;</span>

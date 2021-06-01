@@ -14,16 +14,18 @@
  */
 ?>
 <?php $maxQueryLength = $this->helper(\Magento\CatalogSearch\Helper\Data::class)->getMaxQueryLength();?>
-	<form class="form search advanced" action="<?= $block->escapeUrl($block->getSearchPostUrl()) ?>" method="get">
-	<div id="fieldset_form1" class="fieldset">
+	<form class="form search advanced" method="get">
+	<div id="fieldset_form1">
 	  <div class="primary" style="margin-left:2px">
-		<button type="submit"
+		<button id="search_by_sku"
+				type="button"
 				class="action search primary"
 				title="<?= $block->escapeHtmlAttr(__('Search')) ?>">
 			<span><?= $block->escapeHtml(__('Search')) ?></span>
 		</button>
 	  </div>
 	</div>
+	<h3 id="not-found-sku" style="color:#DF2B2B;font-size: 14px;margin-top:10px;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;"></h3>
 	</form>
 	<div class="advanced-search-box">
 		<div class="page-title myAS">
@@ -230,6 +232,39 @@ require([
 	});
 });
 </script>
+<script >
+    require(['jquery', 'jquery/ui'], function($){
+        jQuery("#search_by_sku").click(function() {
+            var body = jQuery('body').loader();
+            var ajaxRequest;
+            ajaxRequest = jQuery.ajax({
+                url: "<?= $block->escapeHtml($block->getUrl('searchbox/advanced/result')); ?>",
+                type: 'POST',
+                data: {
+                    sku : jQuery("#sku").val()
+                },
+                dataType: 'json',
+                beforeSend: function () {
+                    body.loader('show');
+                }
+            });
+            ajaxRequest.done(function (response, textStatus, jqXHR) {
+                chosen = (response.data);
+                if(chosen['redirect']){
+					jQuery(location).attr('href', chosen['url']);
+				}else{
+					jQuery("#not-found-sku").html('There is no product using \'' + chosen['url'] + '\' SKU.');
+				}
+                body.loader('destroy');
+            });
+            ajaxRequest.fail(function () {
+                jQuery("#not-found-sku").html('Oops, An error occured, please try again later!');
+                body.loader('destroy');
+            });
+        });
+    });
+</script>
+
 <style>
 .intendeduse_content{
 	width: 45%;

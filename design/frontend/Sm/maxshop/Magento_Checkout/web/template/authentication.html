@@ -1,0 +1,79 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div  style="margin-top: 50px;margin-bottom: 50px;" data-block="authentication" data-bind="visible: isActive()">
+    <div class="block-authentication cart-container">
+	<div class="step-title" data-role="title" data-bind="i18n: 'Checkout'">Checkout</div>
+        <!-- ko foreach: getRegion('before') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+        <div class="block block-customer-login"
+             data-bind="attr: {'data-label': $t('or')}">
+            <div style="position: initial;margin-bottom: 15px;" class="block-title">
+                <h4	style="padding: 5px;font-weight: 900;"
+					id="block-customer-login-heading"
+                    role="heading"
+                    aria-level="2"
+                    data-bind="i18n: 'Sign In'"></h4>
+				<h4 style="padding: 5px;"
+					role="heading"
+                    aria-level="2"
+                    data-bind="i18n: 'Already Registered?'"></h4>
+				<h6 style="padding: 5px;"
+					data-bind="i18n: 'Please Login in below:'"></h6>
+            </div>
+            <!-- ko foreach: getRegion('messages') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+            <div class="block-content checkout-methods-items" style="text-align: inherit;margin: 0px;" aria-labelledby="block-customer-login-heading">
+                <form data-role="login"
+                      data-bind="submit:login"
+                      method="post">
+                    <div class="fieldset"
+                              data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+                        <div class="field field-email required">
+                            <label class="label" for="login-email"><span data-bind="i18n: 'Email Address'"></span></label>
+                            <div class="control">
+                                <input type="email"
+                                       class="input-text"
+                                       id="login-email"
+                                       name="username"
+                                       data-bind="attr: {autocomplete: autocomplete}"
+                                       data-validate="{required:true, 'validate-email':true}" />
+                            </div>
+                        </div>
+                        <div class="field field-password required">
+                            <label for="login-password" class="label"><span data-bind="i18n: 'Password'"></span></label>
+                            <div class="control">
+                                <input type="password"
+                                       class="input-text"
+                                       id="login-password"
+                                       name="password"
+                                       data-bind="attr: {autocomplete: autocomplete}"
+                                       data-validate="{required:true}"
+                                       autocomplete="off"/>
+                            </div>
+                        </div>
+                        <!-- ko foreach: getRegion('additional-login-form-fields') -->
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                    <div class="actions-toolbar">
+                        <input name="context" type="hidden" value="checkout" />
+                        <div class="secondary">
+                            <a class="action action-remind" data-bind="attr: { href: forgotPasswordUrl }">
+                                <span data-bind="i18n: 'Forgot Your Password?'"></span>
+                            </a>
+                        </div>
+						<div class="primary">
+                            <button type="submit" class="action action-login secondary"><span data-bind="i18n: 'Login'"></span></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

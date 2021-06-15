@@ -17,7 +17,7 @@
     $_product = $block->getProduct();
 ?>
 <?php if ($_additional = $block->getAdditionalData()) :?>
-    <div class="additional-attributes-wrapper table-wrapper"  style="display: inline-block;    display: inline-block;width: -webkit-fill-available;">
+    <div class="additional-attributes-wrapper table-wrapper" style="display: inline-block;margin-top: 1em;display: inline-block;width: -webkit-fill-available;">
 		<h4 class="table-caption"><?= $block->escapeHtml(__('Additional Information')) ?></h4>
         <table class="data table additional-attributes" id="product-attribute-specs-table">
             <tbody>
@@ -26,12 +26,12 @@
 			<?php $i++; ?>
 			<?php $remainder = $i % 2; ?>
 			<?php if($remainder): ?> 
-                <tr class="even">
+                <tr class="odd">
 			<?php else: ?>
-				<tr class="odd">
+				<tr class="even">
 			<?php endif; ?>
-                    <th class="col label" scope="row"><?= $block->escapeHtml($_data['label']) ?></th>
-                    <td class="col data" data-th="<?= $block->escapeHtmlAttr($_data['label']) ?>"><?= /* @noEscape */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                    <th style="vertical-align: inherit;" class="col label" scope="row"><?= $block->escapeHtml($_data['label']) ?></th>
+                    <td style="vertical-align: inherit;" class="col data" data-th="<?= $block->escapeHtmlAttr($_data['label']) ?>"><?= /* @noEscape */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -45,6 +45,9 @@
 			background: #eeeded;
 		}
 		.data.table .col.label {
+			font-size: 11.844px !important;
+			font-weight: bold !important;
+			color: #2c2e2f;
 			border-bottom: 1px solid #d9dde3;
 			border-right: 1px solid #d9dde3;
 		}
@@ -53,6 +56,12 @@
 			margin: 0 0 10px;
 			padding: 0 0 1px;
 			font-weight: normal;
+		}
+		#product-attribute-specs-table td {
+			padding: 3px 8px !important;
+		}
+		#product-attribute-specs-table th {
+			padding: 3px 8px !important;
 		}
 	</style>
 <?php endif;?>

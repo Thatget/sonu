@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @var $block \Magento\Checkout\Block\Cart
+ */
+ 
+ 
+//Get Object Manager Instance
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+$storeCode = $objectManager->create('Magento\Store\Model\StoreManagerInterface')->getStore()->getCode();
+
+if($storeCode == "multifitbladesca"){
+echo $this->getLayout()
+          ->createBlock('Magento\Cms\Block\Block')
+          ->setBlockId('multifitbladesca_checkout_cart_message')
+          ->toHtml();
+		}
+if ($block->getItemsCount()) {
+    // phpcs:ignore Magento2.Security.LanguageConstruct.DirectOutput
+    echo $block->getChildHtml('with-items');
+} else {
+    // phpcs:ignore Magento2.Security.LanguageConstruct.DirectOutput
+    echo $block->getChildHtml('no-items');
+}

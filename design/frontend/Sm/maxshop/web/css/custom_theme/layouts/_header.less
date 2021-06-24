@@ -5,12 +5,16 @@ body {
     background-attachment: fixed;
     background-repeat: repeat;
     color: #4b4b4b;
-    
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
 }
 
 .page-wrapper {
     max-width: 1170px;
     margin: 0 auto;
+	margin-right: auto;
+    margin-left: auto;
+	padding-left: 15px;
+    padding-right: 15px;
     box-shadow: 45px 0 35px -15px rgba(0, 0, 0, 0.35), -45px 0 35px -15px rgba(0, 0, 0, 0.35);
    
 }
@@ -24,7 +28,12 @@ body {
 	width: 100%;
 	max-width: none;
 }
-
+.opc-wrapper .shipping-address-item.selected-item {
+    border-color: #666666;
+}
+.opc-wrapper .shipping-address-item.selected-item:after {
+    background: #666666;
+}
 .header-inner {
 	background-color: rgba(0,0,0,0.7);
 	padding-bottom: 30px;
@@ -185,6 +194,25 @@ body {
 			
 		}
 	}
+}
+
+.fieldset > .field label span {
+	float: left;
+    color: #666;
+    font-weight: bold;
+    position: relative;
+    z-index: 0;
+}
+.checkout-shipping-method .field label.label span {
+	padding-bottom: 5px;
+	float: left;
+    color: #666;
+    font-weight: bold;
+    position: relative;
+    z-index: 0;
+}
+.checkout-shipping-method .field{
+  margin: 0 0 20px;
 }
 
 .header-style-3.header-container .logo-wrapper {

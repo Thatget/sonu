@@ -7,83 +7,234 @@
 // @codingStandardsIgnoreFile
 
 ?>
+<!--<div class="contact-us-page">-->
+<!--    <div class="row box-1-contact">-->
+<!--        <div class="contact-form col-lg-8 col-md-8 col-sm-8 col-xs-8">-->
+<!--            <form class="form contact"-->
+<!--                  action="--><?php ///* @escapeNotVerified */
+//                  echo $block->getFormAction(); ?><!--"-->
+<!--                  id="contact-form"-->
+<!--                  method="post"-->
+<!--                  data-hasrequired="--><?php ///* @escapeNotVerified */
+//                  echo __('* Required Fields') ?><!--"-->
+<!--                  data-mage-init='{"validation":{}}'>-->
+<!--                <fieldset class="fieldset">-->
+<!--                    <div class="title-bonus-page">-->
+<!--                        <h2>--><?php ///* @escapeNotVerified */
+//                            echo __('Send your comments') ?><!--</h2>-->
+<!--                    </div>-->
+<!--                    <div class="left-input">-->
+<!--                        <div class="field name required">-->
+<!---->
+<!--                            <div class="control">-->
+<!--                                <input placeholder="--><?php //echo __('Your Name*') ?><!--" name="name" id="name"-->
+<!--                                       title="--><?php ///* @escapeNotVerified */
+//                                       echo __('Name') ?><!--"-->
+<!--                                       value="--><?php //echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?><!--"-->
+<!--                                       class="input-text" type="text" data-validate="{required:true}"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="field email required">-->
+<!---->
+<!--                            <div class="control">-->
+<!--                                <input placeholder="--><?php //echo __('Your Email*') ?><!--" name="email" id="email"-->
+<!--                                       title="--><?php ///* @escapeNotVerified */
+//                                       echo __('Email') ?><!--"-->
+<!--                                       value="--><?php //echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?><!--"-->
+<!--                                       class="input-text" type="email"-->
+<!--                                       data-validate="{required:true, 'validate-email':true}"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="field telephone">-->
+<!---->
+<!--                            <div class="control">-->
+<!--                                <input placeholder="--><?php //echo __('Your Phone') ?><!--" name="telephone" id="telephone"-->
+<!--                                       title="--><?php ///* @escapeNotVerified */
+//                                       echo __('Phone Number') ?><!--" value="" class="input-text" type="text"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field comment required">-->
+<!--                        <div class="control">-->
+<!--                            <textarea placeholder="--><?php //echo __('Your Message*') ?><!--" name="comment" id="comment"-->
+<!--                                      title="--><?php ///* @escapeNotVerified */
+//                                      echo __('What’s on your mind?') ?><!--" class="input-text" cols="5" rows="3"-->
+<!--                                      data-validate="{required:true}"></textarea>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    --><?php //echo $block->getChildHtml('form.additional.info'); ?>
+<!--                </fieldset>-->
+<!--                <div class="actions-toolbar">-->
+<!--                    <div class="primary">-->
+<!--                        <input type="hidden" name="hideit" id="hideit" value=""/>-->
+<!--                        <button type="submit" title="--><?php ///* @escapeNotVerified */
+//                        echo __('Send Message') ?><!--" class="action submit primary">-->
+<!--                            <span>--><?php ///* @escapeNotVerified */
+//                                echo __('Send Message') ?><!--</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!---->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="contact-us-page">
     <div class="row box-1-contact">
-        <div class="contact-map-wrap col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="block-map"><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact-googlemap')->toHtml(); ?></div>
-            <div class="contact-des"><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact-desc')->toHtml(); ?></div>
-        </div>
-        <div class="contact-form col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <form class="form contact"
-                  action="<?php /* @escapeNotVerified */
-                  echo $block->getFormAction(); ?>"
-                  id="contact-form"
-                  method="post"
-                  data-hasrequired="<?php /* @escapeNotVerified */
-                  echo __('* Required Fields') ?>"
-                  data-mage-init='{"validation":{}}'>
-                <fieldset class="fieldset">
-                    <div class="title-bonus-page">
-                        <h2><?php /* @escapeNotVerified */
-                            echo __('Send your comments') ?></h2>
-                    </div>
-                    <div class="left-input">
-                        <div class="field name required">
-
-                            <div class="control">
-                                <input placeholder="<?php echo __('Your Name*') ?>" name="name" id="name"
-                                       title="<?php /* @escapeNotVerified */
-                                       echo __('Name') ?>"
-                                       value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>"
-                                       class="input-text" type="text" data-validate="{required:true}"/>
+        <div class="contact-form">
+            <!--<form action="https://multifitblades.com/contacts/index/post/" id="contactForm" method="post">-->
+            <form 
+			action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+			id="contactForm" method="post">
+                <div class="fieldset">
+                    <h2 style="float: none;" class="legend">Contact Information</h2>
+                    <ul class="form-list">
+                        <li class="fields">
+                            <div class="field">
+                                <label for="name" class="required"><em>*</em>Name</label>
+                                <div class="input-box">
+                                    <input name="name" id="name" title="Name" value="" class="input-text required-entry" type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="field email required">
-
-                            <div class="control">
-                                <input placeholder="<?php echo __('Your Email*') ?>" name="email" id="email"
-                                       title="<?php /* @escapeNotVerified */
-                                       echo __('Email') ?>"
-                                       value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>"
-                                       class="input-text" type="email"
-                                       data-validate="{required:true, 'validate-email':true}"/>
+                            <div class="field">
+                                <label for="email" class="required"><em>*</em>Email</label>
+                                <div class="input-box">
+                                    <input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="field telephone">
-
-                            <div class="control">
-                                <input placeholder="<?php echo __('Your Phone') ?>" name="telephone" id="telephone"
-                                       title="<?php /* @escapeNotVerified */
-                                       echo __('Phone Number') ?>" value="" class="input-text" type="text"/>
+                        </li>
+                        <li>
+                            <label for="telephone">Telephone</label>
+                            <div class="input-box">
+                                <input name="telephone" id="telephone" title="Telephone" value="" class="input-text" type="text">
                             </div>
-                        </div>
-                    </div>
-                    <div class="field comment required">
-                        <div class="control">
-                            <textarea placeholder="<?php echo __('Your Message*') ?>" name="comment" id="comment"
-                                      title="<?php /* @escapeNotVerified */
-                                      echo __('What’s on your mind?') ?>" class="input-text" cols="5" rows="3"
-                                      data-validate="{required:true}"></textarea>
-                        </div>
-                    </div>
-                    <?php echo $block->getChildHtml('form.additional.info'); ?>
-                </fieldset>
-                <div class="actions-toolbar">
-                    <div class="primary">
-                        <input type="hidden" name="hideit" id="hideit" value=""/>
-                        <button type="submit" title="<?php /* @escapeNotVerified */
-                        echo __('Send Message') ?>" class="action submit primary">
-                            <span><?php /* @escapeNotVerified */
-                                echo __('Send Message') ?></span>
-                        </button>
-                    </div>
+                        </li>
+                        <li class="wide">
+                            <label for="comment" class="required"><em>*</em>Comment</label>
+                            <div class="input-box">
+                                <textarea name="comment" id="comment" title="Comment" class="required-entry input-text" cols="5" rows="3"></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="g-recaptcha" data-sitekey="6LdX1EwUAAAAAI3OsRTvgMzbo3ZCy_Uz06uil6ys"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LdX1EwUAAAAAI3OsRTvgMzbo3ZCy_Uz06uil6ys&amp;co=aHR0cHM6Ly9tdWx0aWZpdGJsYWRlcy5jb206NDQz&amp;hl=vi&amp;v=CdDdhZfPbLLrfYLBdThNS0-Y&amp;size=normal&amp;cb=k1nacyulj69s" width="304" height="78" role="presentation" name="a-2mi5k88p5rnd" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div>
+                <div class="buttons-set">
+                    <p class="required">* Required Fields</p>
+                    <input type="text" name="hideit" id="hideit" value="" style="display:none !important;">
+                    <button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button>
                 </div>
             </form>
-
         </div>
     </div>
-    <div class="row box-1-contact"><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('info-store')->toHtml(); ?></div>
 </div>
 
+<style>
+    .page-title {
+        width: 100%;
+        overflow: hidden;
+        border-bottom: 2px solid #E8E8E8;
+        margin: 2% 0 25px 0;
+    }
+    .page-title span{
+        font-size: 20px;
+        font-family: 'Racing Sans One', cursive;
+    }
 
+    .contacts-index-index .fieldset, .cms-catalogs .fieldset {
+        padding: 22px 25px 12px 25px;
+    }
+    .contacts-index-index .fieldset {
+        position: relative;
+        display: block;
+    }
+    .fieldset {
+        border: 1px solid #e8e8e8;
+        padding: 22px 25px 12px 33px;
+        margin: 28px 28px;
+    }
 
+    .fieldset .legend {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    h2 {
+        font-size: 18px;
+        font-weight: normal;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0 0 5px;
+        line-height: 1.35;
+        color: #2c2e2f;
+        margin: 0;
+    }
+    .contacts-index-index .form-list, .cms-catalogs .form-list {
+        position: relative;
+    }
+
+    .form-list li {
+        margin: 0 0 8px;
+    }
+    .form-list label {
+        float: left;
+        color: #666;
+        font-weight: bold;
+        position: relative;
+        z-index: 0;
+    }
+	.fields > .field {
+		width: 49%;
+		float: left;
+	}
+@media (min-width: 0) and (max-width: 991px){
+	.fields > .field{
+	    width: 100%;
+	}
+}
+.g-recaptcha{
+	margin: 28px 28px;
+}
+p.required {
+    font-size: 11px;
+    text-align: right;
+    color: #EB340A;
+}
+button.button:hover {
+    border-radius: 3px;
+    background-position: 0 100%;
+    color: #fff;
+    background-color: #6f6f6f;
+}
+button.button {
+background: #ddd;
+color: #4b4b4b;
+}
+div.buttons-set {
+    clear: both;
+    margin: 15px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px solid #e4e4e4 !important;
+    text-align: right;
+}
+.contact-form .buttons-set .button {
+    float: none;
+}
+.form-list label.required em {
+    float: right;
+    font-style: normal;
+    color: #eb340a;
+    position: absolute;
+    top: 0;
+    right: -8px;
+}
+.form-list label {
+    float: left;
+    color: #666;
+    font-weight: bold !important;
+    position: relative;
+    z-index: 0;
+}
+.form-list .input-box input,.form-list .input-box textarea, .form-list .input-box textarea {
+    background-color: #f6f6f6;
+    width: 100%!important;
+}
+</style>

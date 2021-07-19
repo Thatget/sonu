@@ -6,6 +6,9 @@
 -->
 <div data-role="checkout-agreements">
     <div class="checkout-agreements fieldset" data-bind="visible: isVisible">
+		<div id="checkout-agreements-modal" data-bind="afterRender: initModal">
+            <div class="checkout-agreements-item-content" data-bind="html: modalContent, style: {height: '12em', overflow:'auto',padding: '5px',border: '1px solid #e8e8e8' }"></div>
+        </div>
         <!-- ko foreach: agreements -->
             <!-- ko if: ($parent.isAgreementRequired($data)) -->
             <div class="checkout-agreement field choice required">
@@ -34,9 +37,6 @@
             </div>
             <!-- /ko -->
         <!-- /ko -->
-        <div id="checkout-agreements-modal" data-bind="afterRender: initModal">
-            <div class="checkout-agreements-item-content" data-bind="html: modalContent, style: {height: '12em', overflow:'auto',padding: '5px',border: '1px solid #e8e8e8' }"></div>
-        </div>
     </div>
 	<h1 data-bind="afterRender: testShow()"></h1>
 </div>

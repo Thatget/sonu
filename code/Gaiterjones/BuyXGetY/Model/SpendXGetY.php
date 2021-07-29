@@ -179,9 +179,18 @@ class SpendXGetY extends \Magento\Framework\Model\AbstractModel
         //
         $subTotal = $this->_cart->getQuote()->getBaseSubtotalWithDiscount();
 
-        foreach ($productYSkus as $key => $productYSku)
+        //foreach ($productYSkus as $key => $productYSku)
+		for($key = 0;$key < count($productYSkus); $key++)
         {
-            if (($subTotal >= $spendCartTotalRequired[$key]) && ($subTotal < $spendCartTotalRequired[$key+1]))
+			$conditionTwo = false;
+			if($key + 1 >= count($productYSkus)){
+				$conditionTwo = true;
+			}else{
+				if($subTotal < $spendCartTotalRequired[$key+1]){
+					$conditionTwo = true;
+				}
+			}
+            if (($subTotal >= $spendCartTotalRequired[$key]) && ($conditionTwo))
             {
                 $this->log('BUYXGETY cart sub total of '. $subTotal. ' meets minimum requirement of '. $spendCartTotalRequired[$key]);
 
@@ -323,7 +332,7 @@ class SpendXGetY extends \Magento\Framework\Model\AbstractModel
         //$quoteObject->setIsActive(true);
         //$quoteObject->collectTotals()->save();
 
-        $this->addMessage(__('Your %1 has been added to your cart.',$productYDescription),'success');
+        $this->addMessage(__('Your free gift %1 has been added to your cart.',$productYDescription),'success');
         $this->log('product SKU '. $productSku. ' was added to the cart.');
 
     }
@@ -341,7 +350,7 @@ class SpendXGetY extends \Magento\Framework\Model\AbstractModel
         $this->_cart->save();
 
         // does this need a message?
-        $this->addMessage(__('Your %1 has been removed from your cart.',$productYDescription),'success');
+        $this->addMessage(__('Your free gift %1 has been removed from your cart.',$productYDescription),'success');
 
         $this->log('cart ID '. $itemId. ' was removed from the cart.');
 

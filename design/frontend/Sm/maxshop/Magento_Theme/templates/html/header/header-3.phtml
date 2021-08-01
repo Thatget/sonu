@@ -30,24 +30,6 @@
                                        title="<?php echo __('Checkout'); ?>"><?php echo __('Checkout'); ?></a>
                                 </div>
                             </div>
-
-                            <div class="dropdown-block-custom block-login">
-                                <div class="dropdown-toggle">
-                                    <?php
-                                    $login_customer = $block->getLayout()->createBlock('Magento\Customer\Block\Account\Customer');
-                                    ?>
-
-                                    <?php if ($login_customer->customerLoggedIn()) { ?>
-                                        <a class="mn-logout"
-                                           href="<?php echo $block->getUrl('customer/account/logout') ?>"
-                                           title="<?php echo __('Logout'); ?>"><?php echo __('Logout'); ?></a>
-                                    <?php } else { ?>
-                                        <a class="mn-login"
-                                           href="<?php echo $block->getUrl('customer/account/login') ?>"
-                                           title="<?php echo __('Login') ?>"><?php echo __('Login') ?></a>
-                                    <?php } ?>
-                                </div>
-                            </div>
                         </div>
                         <div class="header-middle">
                             <div class="header-contact">

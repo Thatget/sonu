@@ -15,10 +15,21 @@
 
                             
 
-                            <div class="dropdown-block-custom">
+							<div class="dropdown-block-custom block-login">
                                 <div class="dropdown-toggle">
-                                    <a class="myaccount-link" href="<?php echo $block->getUrl('customer/account'); ?>"
-                                       title="<?php echo __('My Account'); ?>"><?php echo __('My Account'); ?></a>
+                                    <?php
+                                    $login_customer = $block->getLayout()->createBlock('Magento\Customer\Block\Account\Customer');
+                                    ?>
+
+                                    <?php if ($login_customer->customerLoggedIn()) { ?>
+                                        <a class="mn-logout"
+                                           href="<?php echo $block->getUrl('customer/account/logout') ?>"
+                                           title="<?php echo __('Logout'); ?>"><?php echo __('Logout'); ?></a>
+                                    <?php } else { ?>
+                                        <a class="mn-login"
+                                           href="<?php echo $block->getUrl('customer/account/login') ?>"
+                                           title="<?php echo __('My Account'); ?>"><?php echo __('My Account'); ?></a>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="mini-cart-header">

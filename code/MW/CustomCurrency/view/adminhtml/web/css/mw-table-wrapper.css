@@ -2,3 +2,6 @@
     overflow-x: visible;
     overflow-y: visible;
 }
+.admin__field-control .admin__control-text {
+    min-width: 8rem !important;
+}
